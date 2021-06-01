@@ -36,16 +36,18 @@ function createData(date, intensitate) {
         
     let stadiu;
 
-    if (intensitate <= 400) {
+    if (intensitate <= 80) {
         stadiu = <Alert severity="info">Copilul a avut miscari obisnuite!</Alert>;
     }
 
-    if (intensitate > 400) {
+    if (intensitate > 80) {
         stadiu = <Alert severity="error">Copilul a plans!</Alert>;
     }
 
     var ziua = new Date().toISOString().slice(0, 10);
     var ora = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+
+    var intensitate = intensitate + "dB";
 
     return { ziua, ora, intensitate, stadiu};
 }
@@ -88,7 +90,7 @@ const Aplicatie = () => {
       socket.on("FromAPI", data => {
         console.log(data)
         
-        if (data <= 400) {
+        if (data <= 80) {
             setMiscariObisnuite(old => old+1);
         } else {
             setMiscariAlarmante(old => old+1);

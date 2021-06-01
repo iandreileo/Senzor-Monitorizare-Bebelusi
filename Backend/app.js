@@ -34,8 +34,8 @@ io.on("connection", (socket) => {
         // Valoarea curenta
         let currentValue = Number(data.toString());
         
-        // Daca valoarea curenta e mai mare de 100 (evitam spamul), trimitem spre website
-        if (currentValue > 100) {
+        // Daca valoarea curenta e mai mare de 10 (evitam spamul), trimitem spre website
+        if (currentValue > 20) {
             socket.emit('FromAPI', currentValue);
         }
     })
